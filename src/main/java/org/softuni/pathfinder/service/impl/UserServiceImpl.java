@@ -2,8 +2,11 @@ package org.softuni.pathfinder.service.impl;
 
 import org.softuni.pathfinder.model.User;
 import org.softuni.pathfinder.model.dto.UserLoginDTO;
+import org.softuni.pathfinder.model.dto.UserRegisterDTO;
+import org.softuni.pathfinder.model.enums.RoleType;
 import org.softuni.pathfinder.repository.UserRepository;
 import org.softuni.pathfinder.service.UserService;
+import org.softuni.pathfinder.util.CurrentUser;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,9 +15,11 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final CurrentUser currentUser;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, CurrentUser currentUser) {
         this.userRepository = userRepository;
+        this.currentUser = currentUser;
     }
 
     @Override
@@ -25,8 +30,37 @@ public class UserServiceImpl implements UserService {
             return false;
         }
 
-        //TODO:
+        currentUser.login(existingUser.get());
 
         return true;
     }
+
+    @Override
+    public boolean registerUser(UserRegisterDTO userRegisterDTO) {
+        if (!userRegisterDTO.password().equals(userRegisterDTO.confirmPassword())) {
+            return false;
+        }
+
+        Optional<User> existingUser = userRepository.findByUsername(userRegisterDTO.username());
+
+        if (existingUser.isPresent()) {
+            return false;
+        }
+
+        userRepository.save(map(userRegisterDTO));
+
+        //TODO: Test if works
+
+        return true;
+    }
+
+    private User map(UserRegisterDTO userRegisterDTO) {
+        return new User()
+                .setUsername(userRegisterDTO.username())
+                .setEmail(userRegisterDTO.email())
+                .setAge(userRegisterDTO.age())
+                .setPassword(userRegisterDTO.password())
+                .setRoles(RoleType.USER);
+    }
+
 }

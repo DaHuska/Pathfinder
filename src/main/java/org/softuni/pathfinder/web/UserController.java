@@ -1,6 +1,7 @@
 package org.softuni.pathfinder.web;
 
 import org.softuni.pathfinder.model.dto.UserLoginDTO;
+import org.softuni.pathfinder.model.dto.UserRegisterDTO;
 import org.softuni.pathfinder.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,19 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
+    @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String register(UserRegisterDTO userRegisterDTO) {
+        userService.registerUser(userRegisterDTO);
+
+        return "login";
+    }
+
 
     @GetMapping("/login")
     public String login() {
