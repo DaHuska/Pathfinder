@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.validator.constraints.Length;
 
 import org.softuni.pathfinder.model.enums.LevelType;
+import org.softuni.pathfinder.model.enums.RoleType;
 
 import java.util.List;
 
@@ -22,6 +23,9 @@ public class User extends BaseEntity {
     @Column
     private String fullName;
 
+    @Column
+    private Integer age;
+
     @Column(nullable = false)
     private String email;
 
@@ -36,47 +40,72 @@ public class User extends BaseEntity {
         return username;
     }
 
-    public void setUsername(String username) {
+    public User setUsername(String username) {
         this.username = username;
+
+        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public User setPassword(String password) {
         this.password = password;
+
+        return this;
     }
 
     public String getFullName() {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
+    public User setFullName(String fullName) {
         this.fullName = fullName;
+
+        return this;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public User setAge(Integer age) {
+        this.age = age;
+
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public User setEmail(String email) {
         this.email = email;
+
+        return this;
     }
 
     public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public User setRoles(RoleType roleType) {
+        Role role = new Role();
+        role.setName(roleType);
+
+        this.roles.add(role);
+
+        return this;
     }
 
     public LevelType getLevel() {
         return level;
     }
 
-    public void setLevel(LevelType level) {
+    public User setLevel(LevelType level) {
         this.level = level;
+
+        return this;
     }
 }
