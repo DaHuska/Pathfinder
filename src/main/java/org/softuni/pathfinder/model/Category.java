@@ -1,11 +1,9 @@
 package org.softuni.pathfinder.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
-import jakarta.persistence.EnumType;
+import jakarta.persistence.*;
 import org.softuni.pathfinder.model.enums.CategoryType;
+
+import java.util.List;
 
 @Entity
 @Table(name = "categories")
@@ -14,9 +12,19 @@ public class Category extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private CategoryType name;
 
-    // Very long string
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String description;
+
+    @ManyToMany
+    private List<Route> routes;
+
+    public List<Route> getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(List<Route> routes) {
+        this.routes = routes;
+    }
 
     public CategoryType getName() {
         return name;

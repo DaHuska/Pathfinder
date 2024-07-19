@@ -17,8 +17,7 @@ public class Comment extends BaseEntity {
     @Column
     private Date created;
 
-    // Very long text
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String textContent;
 
     @ManyToOne

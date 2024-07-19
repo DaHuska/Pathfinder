@@ -8,8 +8,7 @@ public class Picture extends BaseEntity {
     @Column(nullable = false)
     private String title;
 
-    // Very long text
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT" , nullable = false)
     private String url;
 
     @ManyToOne

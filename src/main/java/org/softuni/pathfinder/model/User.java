@@ -1,12 +1,11 @@
 package org.softuni.pathfinder.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.hibernate.validator.constraints.Length;
 
 import org.softuni.pathfinder.model.enums.LevelType;
+
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -27,8 +26,8 @@ public class User extends BaseEntity{
     private String email;
 
     // Each user should have "User" role
-    @ManyToOne(targetEntity = Role.class)
-    private Role role;
+    @ManyToMany(targetEntity = Role.class, mappedBy = "users")
+    private List<Role> roles;
 
     @Column(nullable = false)
     private LevelType level;
@@ -65,12 +64,12 @@ public class User extends BaseEntity{
         this.email = email;
     }
 
-    public Role getRole() {
-        return role;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public LevelType getLevel() {

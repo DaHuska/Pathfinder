@@ -3,11 +3,12 @@ package org.softuni.pathfinder.model;
 import jakarta.persistence.*;
 import org.softuni.pathfinder.model.enums.LevelType;
 
+import java.util.List;
+
 @Entity
 @Table(name = "routes")
 public class Route extends BaseEntity {
-    //Very long text
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String gpx;
 
     @Column
@@ -22,6 +23,17 @@ public class Route extends BaseEntity {
 
     @ManyToOne
     private User author;
+
+    @ManyToMany(targetEntity = Category.class, mappedBy = "routes")
+    private List<Category> categories;
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
 
     public String getGpx() {
         return gpx;
