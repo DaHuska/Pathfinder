@@ -23,7 +23,7 @@ public class User extends BaseEntity {
     @Column
     private String fullName;
 
-    @Column
+    @Column(nullable = false)
     private Integer age;
 
     @Column(nullable = false)
@@ -36,7 +36,7 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private LevelType level;
 
-    public @Length(min = 2) String getUsername() {
+    public String getUsername() {
         return username;
     }
 
@@ -90,11 +90,8 @@ public class User extends BaseEntity {
         return roles;
     }
 
-    public User setRoles(RoleType roleType) {
-        Role role = new Role();
-        role.setName(roleType);
-
-        this.roles.add(role);
+    public User setRoles(List<Role> roles) {
+        this.roles = roles;
 
         return this;
     }
