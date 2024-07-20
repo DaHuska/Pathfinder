@@ -27,7 +27,7 @@ public class UserController {
     public String register(UserRegisterDTO userRegisterDTO) {
         userService.registerUser(userRegisterDTO);
 
-        return "login";
+        return "redirect:/users/login";
     }
 
 
@@ -44,6 +44,6 @@ public class UserController {
             return "login";
         }
 
-        return "index";
+        return "redirect:/";
     }
 }
