@@ -20,13 +20,13 @@
             <li>
                 <a href="/">About</a>
             </li>
-            <li>
+            <li th:if="${@currentUser.isLogged()}">
                 <a href="/">Add new route</a>
             </li>
             <li th:if="${@currentUser.isLogged()}">
                 <a href="/">Profile</a>
             </li>
-            <li>
+            <li th:if="${@currentUser.isLogged()}">
                 <a href="/">Admin</a>
             </li>
             <li th:if="${@currentUser.isLogged()}">
