@@ -11,10 +11,10 @@
             <li>
                 <a href="/">Home</a>
             </li>
-            <li>
+            <li th:unless="${@currentUser.isLogged()}">
                 <a href="/">Login</a>
             </li>
-            <li>
+            <li th:unless="${@currentUser.isLogged()}">
                 <a href="/">Register</a>
             </li>
             <li>
@@ -23,13 +23,13 @@
             <li>
                 <a href="/">Add new route</a>
             </li>
-            <li>
+            <li th:if="${@currentUser.isLogged()}">
                 <a href="/">Profile</a>
             </li>
             <li>
                 <a href="/">Admin</a>
             </li>
-            <li>
+            <li th:if="${@currentUser.isLogged()}">
                 <a href="/">Logout</a>
             </li>
         </ul>

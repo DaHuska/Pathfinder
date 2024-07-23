@@ -3,8 +3,10 @@ package org.softuni.pathfinder.util;
 import org.softuni.pathfinder.model.User;
 import org.softuni.pathfinder.model.enums.LevelType;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 
 @Component
+@SessionScope
 public class CurrentUser {
     private String username;
 
