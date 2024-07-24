@@ -55,6 +55,11 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
+    @Override
+    public void logoutUser() {
+        currentUser.logout();
+    }
+
     private User map(UserRegisterDTO userRegisterDTO) {
         return new User()
                 .setUsername(userRegisterDTO.username())

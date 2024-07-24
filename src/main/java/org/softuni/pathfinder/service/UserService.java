@@ -5,6 +5,6 @@ import org.softuni.pathfinder.model.dto.UserRegisterDTO;
 
 public interface UserService {
     boolean loginUser(UserLoginDTO userLoginDTO);
-
     boolean registerUser(UserRegisterDTO userRegisterDTO);
+    void logoutUser();
 }
