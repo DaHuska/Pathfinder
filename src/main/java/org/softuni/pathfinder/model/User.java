@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import org.hibernate.validator.constraints.Length;
 
 import org.softuni.pathfinder.model.enums.LevelType;
-import org.softuni.pathfinder.model.enums.RoleType;
 
 import java.util.List;
 
@@ -29,7 +28,6 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String email;
 
-    // Each user should have "User" role
     @ManyToMany(targetEntity = Role.class, mappedBy = "users")
     private List<Role> roles;
 
