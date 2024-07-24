@@ -1,9 +1,12 @@
 package org.softuni.pathfinder.util;
 
+import org.softuni.pathfinder.model.Role;
 import org.softuni.pathfinder.model.User;
 import org.softuni.pathfinder.model.enums.LevelType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
+
+import java.util.List;
 
 @Component
 @SessionScope
@@ -16,6 +19,8 @@ public class CurrentUser {
 
     private LevelType levelType;
 
+    private List<Role> roles;
+
     private boolean isLogged;
 
     public void login(User user) {
@@ -23,6 +28,7 @@ public class CurrentUser {
         setFullName(user.getFullName());
         setEmail(user.getEmail());
         setLevelType(user.getLevel());
+        setRole(user.getRoles());
         setLogged(true);
     }
 
@@ -64,6 +70,14 @@ public class CurrentUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Role> getRole() {
+        return roles;
+    }
+
+    public void setRole(List<Role> roles) {
+        this.roles = roles;
     }
 
     public LevelType getLevelType() {
