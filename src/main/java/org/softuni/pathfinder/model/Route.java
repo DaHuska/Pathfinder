@@ -31,47 +31,59 @@ public class Route extends BaseEntity {
         return categories;
     }
 
-    public void setCategories(List<Category> categories) {
+    public Route setCategories(List<Category> categories) {
         this.categories = categories;
+
+        return this;
     }
 
     public String getGpx() {
         return gpx;
     }
 
-    public void setGpx(String gpx) {
+    public Route setGpx(String gpx) {
         this.gpx = gpx;
+
+        return this;
     }
 
     public LevelType getLevel() {
         return level;
     }
 
-    public void setLevel(LevelType level) {
+    public Route setLevel(LevelType level) {
         this.level = level;
+
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Route setName(String name) {
         this.name = name;
+
+        return this;
     }
 
     public String getVideoURL() {
         return videoURL;
     }
 
-    public void setVideoURL(String videoURL) {
+    public Route setVideoURL(String videoURL) {
         this.videoURL = videoURL;
+
+        return this;
     }
 
     public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public Route setAuthor(User author) {
         this.author = author;
+
+        return this;
     }
 }
