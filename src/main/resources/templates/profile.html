@@ -14,11 +14,17 @@
                     <div class="text-center mt-3">
                         <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
                         <h5 class="mt-4 mb-0">Full name</h5>
-                        <span>UI/UX Designer</span>
+                        <span>
+                            <th:block th:text="${@currentUser.getFullName()} ?: 'Full name'"></th:block>
+                        </span>
                         <h5 class="mt-2 mb-0">Username</h5>
-                        <span>UI/UX Designer</span>
+                        <span>
+                            <th:block th:text="${@currentUser.getUsername()} ?: 'Username'"></th:block>
+                        </span>
                         <h5 class="mt-2 mb-0">Age</h5>
-                        <span>33</span>
+                        <span>
+                            <th:block th:text="${@currentUser.getAge()} ?: 'NULL'"></th:block>
+                        </span>
                         <div class="px-4 mt-5">
                             <p class="fonts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim et nostrum
                                 optio perferendis quam quod ratione rem sit soluta ut! A dolor laborum, maiores neque

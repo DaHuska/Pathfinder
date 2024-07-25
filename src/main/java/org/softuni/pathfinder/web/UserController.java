@@ -52,4 +52,9 @@ public class UserController {
 
         return "redirect:/home";
     }
+
+    @GetMapping("/profile")
+    public String profile() {
+        return "profile";
+    }
 }

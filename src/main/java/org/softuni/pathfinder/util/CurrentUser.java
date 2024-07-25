@@ -17,6 +17,8 @@ public class CurrentUser {
 
     private String email;
 
+    private Integer age;
+
     private LevelType levelType;
 
     private List<Role> roles;
@@ -25,6 +27,7 @@ public class CurrentUser {
 
     public void login(User user) {
         setUsername(user.getUsername());
+        setAge(user.getAge());
         setFullName(user.getFullName());
         setEmail(user.getEmail());
         setLevelType(user.getLevel());
@@ -54,6 +57,14 @@ public class CurrentUser {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public String getFullName() {
