@@ -1,10 +1,12 @@
 package org.softuni.pathfinder.web;
 
+import ch.qos.logback.core.model.Model;
 import org.softuni.pathfinder.model.dto.UserLoginDTO;
 import org.softuni.pathfinder.model.dto.UserRegisterDTO;
 import org.softuni.pathfinder.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -53,8 +55,8 @@ public class UserController {
         return "redirect:/home";
     }
 
-    @GetMapping("/profile")
-    public String profile() {
+    @GetMapping("/profile/{id}")
+    public String profile(@PathVariable("id") Long id, Model model) {
         return "profile";
     }
 }

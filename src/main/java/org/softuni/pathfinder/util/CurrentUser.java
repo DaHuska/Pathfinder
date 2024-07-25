@@ -11,6 +11,8 @@ import java.util.List;
 @Component
 @SessionScope
 public class CurrentUser {
+    private Long id;
+
     private String username;
 
     private String fullName;
@@ -26,6 +28,7 @@ public class CurrentUser {
     private boolean isLogged;
 
     public void login(User user) {
+        setId(user.getId());
         setUsername(user.getUsername());
         setAge(user.getAge());
         setFullName(user.getFullName());
@@ -36,11 +39,29 @@ public class CurrentUser {
     }
 
     public void logout() {
+        setId(null);
+        setAge(null);
         setUsername(null);
         setFullName(null);
         setEmail(null);
         setLevelType(null);
         setLogged(false);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public boolean isLogged() {
