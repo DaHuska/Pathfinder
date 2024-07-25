@@ -22,7 +22,7 @@
                 <a href="/">About</a>
             </li>
             <li th:if="${@currentUser.isLogged()}">
-                <a href="/">Add new route</a>
+                <a th:href="@{/routes/add}">Add new route</a>
             </li>
             <li th:if="${@currentUser.isLogged()}">
                 <a th:href="@{/users/profile/{id}(id = ${@currentUser.getId()})}">Profile</a>
